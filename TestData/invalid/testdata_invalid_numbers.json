@@ -1,0 +1,11 @@
+[
+    {"full_name": "Test User", "phone_number": "123"},
+    {"full_name": "Test User", "phone_number": "1/703/123/1234"},
+    {"full_name": "Test User", "phone_number": "Nr 102-123-1234"},
+    {"full_name": "Test User", "phone_number": "<script>alert(“XSS”)</script>"},
+    {"full_name": "Test User","phone_number": "7031111234"},
+    {"full_name": "Test User", "phone_number": "+1234 (201) 123-1234"},
+    {"full_name": "Test User", "phone_number": "(001) 123-1234"},
+    {"full_name": "Test User", "phone_number": "+01 (703) 123-1234"},
+    {"full_name": "Test User", "phone_number": "(703) 123-1234 ext 204"}
+]

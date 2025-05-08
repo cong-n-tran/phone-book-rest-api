@@ -1,0 +1,1677 @@
+{
+	"info": {
+		"_postman_id": "86f77952-9f47-4e93-b917-18ec1244179a",
+		"name": "PhoneBook API Tests",
+		"description": "CSE 4384-001 Secure Programming (Thomas L. \"Trey\" Jones)\n\nAssignment 11\n\nKhanh Nguyen Cong Tran\n\n1002046419",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28410895"
+	},
+	"item": [
+		{
+			"name": "PhoneBook/add",
+			"item": [
+				{
+					"name": "Add Entry (Valid)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									"",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"John Doe\",\n    \"phone_number\": \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Entry (Invalid Phone)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"John Doe\",\n    \"phone_number\": \"Invalid Phone Number\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add Entry (Invalid Name)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"full_name\": \"This name is not valid at all because it is too long and has numbers: 123456789. \",\n    \"phone_number\": \"1234567890\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/add",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "basic POST commands for valid, invalid phone, and invalid name cases\n\nthis does **NOT** do any clean up so any valid entries added will **remain** in the database until it is removed."
+		},
+		{
+			"name": "PhoneBook/deleteByName",
+			"item": [
+				{
+					"name": "Delete By Name (invalid)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/deleteByName?full_name=Not John Doe",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"deleteByName"
+							],
+							"query": [
+								{
+									"key": "full_name",
+									"value": "Not John Doe"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Name (valid)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/deleteByName?full_name=Test User",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"deleteByName"
+							],
+							"query": [
+								{
+									"key": "full_name",
+									"value": "Test User"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "basic PUT commands for invalid and valid name deletions\n\nthis does **NOT** add an entry beforehand so you will need to delete an existing entry for the PUT command to be successful."
+		},
+		{
+			"name": "PhoneBook/deleteByNumber",
+			"item": [
+				{
+					"name": "Delete By Number (valid)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/deleteByNumber?phone_number=1234567890",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"deleteByNumber"
+							],
+							"query": [
+								{
+									"key": "phone_number",
+									"value": "1234567890"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete By Number (invalid)",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-API-Key",
+								"value": "admin-key",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/PhoneBook/deleteByNumber?phone_number=Way too long and not even numbers. ",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"PhoneBook",
+								"deleteByNumber"
+							],
+							"query": [
+								{
+									"key": "phone_number",
+									"value": "Way too long and not even numbers. "
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"description": "basic PUT commands for invalid and valid number deletions\n\nthis does **NOT** add an entry beforehand so you will need to delete an existing entry for the PUT command to be successful."
+		},
+		{
+			"name": "Unit Tests",
+			"item": [
+				{
+					"name": "Testing One Entry",
+					"item": [
+						{
+							"name": "Unit Test: Removing a single entry by name",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomId = Math.floor(Math.random() * 1000);",
+													"const testName = `Test User`; ",
+													"const testPhoneNumber = `${Math.floor(100 + Math.random()*900)}-${Math.floor(100 + Math.random()*900)}-${Math.floor(1000 + Math.random()*9000)}`;",
+													"",
+													"pm.environment.set(\"full_name\", testName);",
+													"pm.environment.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"pm.variables.set(\"full_name\", testName);",
+													"pm.variables.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"console.log(\"Testing removing a single entry by name...\")",
+													"console.log(\"Adding name: \", testName)",
+													"console.log(\"Adding number: \", testPhoneNumber)",
+													"",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Name (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Add a test entry before deletion",
+													"const inputName = pm.environment.get(\"full_name\");",
+													"",
+													"pm.variables.set(\"full_name\", inputName);",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by name\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByName?full_name={{full_name}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByName"
+											],
+											"query": [
+												{
+													"key": "full_name",
+													"value": "{{full_name}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "no file needed"
+						},
+						{
+							"name": "Unit Test: Removing a single entry by number",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomId = Math.floor(Math.random() * 1000);",
+													"const testName = `Test User`; ",
+													"const testPhoneNumber = `${Math.floor(100 + Math.random()*900)}-${Math.floor(100 + Math.random()*900)}-${Math.floor(1000 + Math.random()*9000)}`;",
+													"",
+													"pm.environment.set(\"full_name\", testName);",
+													"pm.environment.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"pm.variables.set(\"full_name\", testName);",
+													"pm.variables.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"console.log(\"Testing removing a single entry by number...\")",
+													"console.log(\"Adding name: \", testName)",
+													"console.log(\"Adding number: \", testPhoneNumber)",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Number (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Add a test entry before deletion",
+													"const inputPhoneNumber = pm.environment.get(\"phone_number\");",
+													"",
+													"console.log(inputPhoneNumber)",
+													"pm.variables.set(\"phone_number\", inputPhoneNumber);",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if deletion was successful",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by phone number\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByNumber?phone_number={{phone_number}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByNumber"
+											],
+											"query": [
+												{
+													"key": "phone_number",
+													"value": "{{phone_number}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "no file needed"
+						},
+						{
+							"name": "Unit Test: Adding a single entry",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"const randomId = Math.floor(Math.random() * 1000);",
+													"const testName = `Test User`; ",
+													"const testPhoneNumber = `${Math.floor(100 + Math.random()*900)}-${Math.floor(100 + Math.random()*900)}-${Math.floor(1000 + Math.random()*9000)}`;",
+													"",
+													"pm.environment.set(\"full_name\", testName);",
+													"pm.environment.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"pm.variables.set(\"full_name\", testName);",
+													"pm.variables.set(\"phone_number\", testPhoneNumber);",
+													"",
+													"console.log(\"Testing adding a single entry...\")",
+													"console.log(\"Adding name: \", testName)",
+													"console.log(\"Adding number: \", testPhoneNumber)"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Name (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Add a test entry before deletion",
+													"const inputName = pm.environment.get(\"full_name\");",
+													"",
+													"pm.variables.set(\"full_name\", inputName);",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by name\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByName?full_name={{full_name}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByName"
+											],
+											"query": [
+												{
+													"key": "full_name",
+													"value": "{{full_name}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "no file needed"
+						}
+					],
+					"description": "All of these unit test do **not** require a test json file to be ran."
+				},
+				{
+					"name": "Testing Multiple Entries",
+					"item": [
+						{
+							"name": "Unit Test: Adding Invalid Name Entries",
+							"item": [
+								{
+									"name": "Add Entry (Invalid Name)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Log the variables for debugging",
+													"console.log(\"Testing invalid name:\", pm.variables.get(\"full_name\"));"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 400 (Bad Request)",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"",
+													"// Test if response contains an error message about invalid phone number",
+													"pm.test(\"Error message indicates invalid name format\", function () {",
+													"    const jsonData = pm.response.json();",
+													"    pm.expect(jsonData.detail[0].msg).to.include(\"Invalid name format\");",
+													"    pm.expect(jsonData.detail[0].type).to.include(\"value_error\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "please run with the **testdata_invalid_names.json** file."
+						},
+						{
+							"name": "Unit Test: Adding Invalid Number Entries",
+							"item": [
+								{
+									"name": "Add Entry (Invalid Phone)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Log the variables for debugging",
+													"console.log(\"Testing invalid number:\", pm.variables.get(\"phone_number\"));"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 400 (Bad Request)",
+													"pm.test(\"Status code is 422\", function () {",
+													"    pm.response.to.have.status(422);",
+													"});",
+													"",
+													"// Test if response contains an error message about invalid phone number",
+													"pm.test(\"Error message indicates invalid phone number\", function () {",
+													"    const jsonData = pm.response.json();",
+													"    pm.expect(jsonData.detail[0].msg).to.include(\"Invalid phone format\");",
+													"        pm.expect(jsonData.detail[0].type).to.include(\"value_error\");",
+													"",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "please run with the **testdata_invalid_numbers.json** file."
+						},
+						{
+							"name": "Unit Test: Adding multiple valid name entries",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Log the variables for debugging",
+													"console.log(\"Testing valid name:\", pm.variables.get(\"full_name\"));",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Name (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"console.log(pm.variables.get(\"full_name\"))",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by name\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByName?full_name={{full_name}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByName"
+											],
+											"query": [
+												{
+													"key": "full_name",
+													"value": "{{full_name}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "please run with the **testdata_valid_names.json** file."
+						},
+						{
+							"name": "Unit Test: Adding multiple valid number entries",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Log the variables for debugging",
+													"console.log(\"Testing valid phone:\", pm.variables.get(\"phone_number\"));",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Number (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"console.log(pm.variables.get(\"phone_number\"))",
+													"",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if deletion was successful",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by phone number\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByNumber?phone_number={{phone_number}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByNumber"
+											],
+											"query": [
+												{
+													"key": "phone_number",
+													"value": "{{phone_number}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "please run with the **testdata_valid_numebres.json** file."
+						},
+						{
+							"name": "Unit Test: Adding valid custom data",
+							"item": [
+								{
+									"name": "Add Entry (Valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"// Log the variables for debugging",
+													"console.log(\"Testing valid name:\", pm.variables.get(\"full_name\"));",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"// Test if entry was added successfully",
+													"pm.test(\"Entry added successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person added successfully\");",
+													"});",
+													"",
+													"// Log response for debugging",
+													"console.log(\"Add Entry Response:\", pm.response.json());",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "POST",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n    \"full_name\": \"{{full_name}}\",\n    \"phone_number\": \"{{phone_number}}\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/add",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"add"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Delete By Name (valid)",
+									"event": [
+										{
+											"listen": "prerequest",
+											"script": {
+												"exec": [
+													"console.log(pm.variables.get(\"full_name\"))",
+													""
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										},
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"// Test if status code is 200 for valid deletion",
+													"pm.test(\"Status code is 200\", function () {",
+													"    pm.response.to.have.status(200);",
+													"});",
+													"",
+													"pm.test(\"Entry deleted successfully\", function () {",
+													"    pm.response.to.have.status(200);",
+													"    pm.expect(pm.response.json().message).to.eql(\"Person deleted successfully by name\");",
+													"});",
+													"",
+													"console.log(\"Response:\", pm.response.json());"
+												],
+												"type": "text/javascript",
+												"packages": {}
+											}
+										}
+									],
+									"request": {
+										"auth": {
+											"type": "noauth"
+										},
+										"method": "PUT",
+										"header": [
+											{
+												"key": "Content-Type",
+												"value": "application/json",
+												"type": "text"
+											},
+											{
+												"key": "X-API-Key",
+												"value": "admin-key",
+												"type": "text"
+											}
+										],
+										"url": {
+											"raw": "{{base_url}}/PhoneBook/deleteByName?full_name={{full_name}}",
+											"host": [
+												"{{base_url}}"
+											],
+											"path": [
+												"PhoneBook",
+												"deleteByName"
+											],
+											"query": [
+												{
+													"key": "full_name",
+													"value": "{{full_name}}"
+												}
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"description": "please run with the **testdata_valid_custom.json** file."
+						}
+					],
+					"description": "All of these test **require** test json files to work properly. Please look at under _testdata_ folder for the proper test json file for each unit test."
+				}
+			],
+			"description": "Unit Testing for all the sample data scenarios."
+		},
+		{
+			"name": "List Phonebook",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Test if status code is 200",
+							"pm.test(\"Status code is 200\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});",
+							"",
+							"// Test if response is an array",
+							"pm.test(\"Response is an array\", function () {",
+							"    var jsonData = pm.response.json();",
+							"    pm.expect(jsonData).to.be.an(\"array\");",
+							"});",
+							"",
+							"// Log response for debugging",
+							"console.log(\"Response:\", pm.response.json());"
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "X-API-Key",
+						"value": "admin-key",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/PhoneBook/list",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"PhoneBook",
+						"list"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

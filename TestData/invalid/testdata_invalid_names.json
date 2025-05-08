@@ -1,0 +1,8 @@
+[
+    {"full_name": "Ron O’’Henry", "phone_number": "(123) 456-7890"},
+    {"full_name": "Ron O’Henry-Smith-Barnes", "phone_number": "(123) 456-7891"},
+    {"full_name": "L33t Hacker", "phone_number": "(123) 456-7890"},
+    {"full_name": "<Script>alert(“XSS”)</Script>", "phone_number": "(123) 456-7892"},
+    {"full_name": "Brad Everett Samuel Smith", "phone_number": "(123) 456-7893"},
+    {"full_name": "select * from users;", "phone_number": "(123) 456-7894"}
+]

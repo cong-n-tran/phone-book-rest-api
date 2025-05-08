@@ -1,0 +1,27 @@
+{
+	"id": "63b3a15b-d184-4be4-801d-bed058d0b1ac",
+	"name": "CSE 4382 PhoneBook API",
+	"values": [
+		{
+			"key": "base_url",
+			"value": "http://127.0.0.1:8000",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "full_name",
+			"value": "John Doe",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "phone_number",
+			"value": "+123456789",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"_postman_variable_scope": "environment",
+	"_postman_exported_at": "2025-04-20T21:10:15.483Z",
+	"_postman_exported_using": "Postman/11.37.5"
+}
